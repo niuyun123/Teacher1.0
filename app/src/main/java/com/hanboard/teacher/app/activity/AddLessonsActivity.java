@@ -8,10 +8,13 @@ import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hanboard.teacher.R;
 import com.hanboard.teacher.common.base.BaseActivity;
+import com.hanboard.teacher.common.tools.ImmersedStatubarUtils;
 import com.hanboard.teacher.common.view.ClearEditText;
 import com.hanboard.teacher.common.view.WheelView;
 import com.hanboard.teacher.entity.Pickers;
@@ -30,6 +33,8 @@ public class AddLessonsActivity extends BaseActivity {
     TextView addLessonsKexing;
     @BindView(R.id.add_lessons_keshi)
     ClearEditText addLessonsKeshi;
+    @BindView(R.id.top)
+    LinearLayout topView;
     private String mTitle;
     private String mKeshi;
     private String mKexing;
@@ -37,8 +42,10 @@ public class AddLessonsActivity extends BaseActivity {
     private WheelView mWlwSelect;
     @Override
     protected void initContentView(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_add_lessons);
         ButterKnife.bind(this);
+        ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         Pickers p = new Pickers("新授课","1");
         Pickers p1 = new Pickers("练习课","2");
         Pickers p2 = new Pickers("复习课","3");

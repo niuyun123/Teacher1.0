@@ -60,12 +60,6 @@
             </intent-filter>
         </receiver>
         <!-- 网络监听广播 -->
-        <receiver android:name=".broadCast.ConnectionChangeReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-        <!-- 网络监听广播 -->
         <receiver android:name=".broadCast.NetBrodeCaset">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />

@@ -157,7 +157,44 @@
                     android:gravity="center_vertical"
                     android:text="意见建议" />
             </RelativeLayout>
-
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <ImageView
+                    android:clickable="true"
+                    android:id="@+id/home_aboutus"
+                    android:src="@mipmap/right_03"
+                    android:layout_marginRight="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="关于我们" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/home_tv_vsion"
+                    android:text="1.0"
+                    android:textColor="@color/theme_color"
+                    android:layout_marginRight="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="当前版本:" />
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

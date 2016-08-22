@@ -10,6 +10,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.hanboard.teacher.R;
 import com.hanboard.teacher.app.adapter.HomeListAdapter;
@@ -19,6 +20,7 @@ import com.hanboard.teacher.common.callback.UpdateCallback;
 import com.hanboard.teacher.common.tools.ClearSdCard;
 import com.hanboard.teacher.common.tools.ImmersedStatubarUtils;
 import com.hanboard.teacher.common.tools.VersionUtils;
+import com.hanboard.teacher.common.view.AboutUsDialog;
 import com.hanboard.teacher.common.view.CircleImageView;
 import com.hanboard.teacher.entity.Account;
 import com.hanboard.teacher.entity.Domine;
@@ -41,7 +43,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import it.sephiroth.android.library.picasso.Picasso;
 
-public class HomeActivity extends BaseActivity implements UpdateCallback ,IDataCallback<Domine>{
+public class HomeActivity extends BaseActivity implements UpdateCallback, IDataCallback<Domine> {
     //用户头像
     //功能列表
     @BindView(R.id.home_lv_function)
@@ -54,10 +56,13 @@ public class HomeActivity extends BaseActivity implements UpdateCallback ,IDataC
     LinearLayout topView;
     @BindView(R.id.home_setting_usericon)
     CircleImageView mSettingUsericon;
+    @BindView(R.id.home_tv_vsion)
+    TextView mVsion;
 
     //检测登录跟新的接口
     private IVersionModel iVersionModel;
     private IUserModel iUserModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +74,7 @@ public class HomeActivity extends BaseActivity implements UpdateCallback ,IDataC
         ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         iVersionModel = new VersionModelImpl();
         iUserModel = new UserModelImpl();
-        iUserModel.getUserIno((String) SharedPreferencesUtils.getParam(me,"id",""),this);
+        iUserModel.getUserIno((String) SharedPreferencesUtils.getParam(me, "id", ""), this);
         checkUpdate();
         //设置菜单的点击
         mHomeIvUsericon.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +89,7 @@ public class HomeActivity extends BaseActivity implements UpdateCallback ,IDataC
     }
 
     private void initData() {
+        mVsion.setText("v:"+VersionUtils.getVersionName(me));
         Picasso.with(this).load((String) SharedPreferencesUtils.getParam(this, "userImg", "")).into(mHomeIvUsericon);
         Picasso.with(this).load((String) SharedPreferencesUtils.getParam(this, "userImg", "")).into(mSettingUsericon);
         List<Integer> imgs = new ArrayList<>();
@@ -119,17 +125,19 @@ public class HomeActivity extends BaseActivity implements UpdateCallback ,IDataC
             intent.putExtra("version", version);
             intent.setClass(this, VersionActivity.class);
             startActivity(intent);
-        }ToastUtils.showShort(me,"最新版本");
+        }
+        ToastUtils.showShort(me, "最新版本");
     }
-    @OnClick({R.id.home_setting_usericon, R.id.home_bt_clear, R.id.home_update, R.id.home_suggestion, R.id.home_exit})
+
+    @OnClick({R.id.home_setting_usericon, R.id.home_bt_clear, R.id.home_update,R.id.home_aboutus, R.id.home_suggestion, R.id.home_exit})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.home_setting_usericon:
-                startActivityForResult(new Intent(me,MineActivity.class),800);
+                startActivityForResult(new Intent(me, MineActivity.class), 800);
                 break;
             case R.id.home_bt_clear:
                 ToastUtils.showShort(me, "清除缓存");
-                String path = SDCardHelper.getSDCardPath() + File.separator + "temp" + File.separator+ "Hanboard";
+                String path = SDCardHelper.getSDCardPath() + File.separator + "temp" + File.separator + "Hanboard";
                 ClearSdCard.clearData(path, me);
                 break;
             case R.id.home_update:
@@ -139,23 +147,28 @@ public class HomeActivity extends BaseActivity implements UpdateCallback ,IDataC
             case R.id.home_suggestion:
                 startActivity(SugestionActivity.class);
                 break;
-            case R.id.home_exit:
+            case R.id.home_aboutus:
+                AboutUsDialog aboutUsDialog = new AboutUsDialog.Builder(this).create();
+                aboutUsDialog.show();
+                break;
+             case R.id.home_exit:
                 startActivity(LoginActivity.class);
                 finish();
                 break;
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==800){
-            iUserModel.getUserIno((String) SharedPreferencesUtils.getParam(me,"id",""),this);
+        if (requestCode == 800) {
+            iUserModel.getUserIno((String) SharedPreferencesUtils.getParam(me, "id", ""), this);
         }
     }
 
     @Override
     public void onSuccess(Domine data) {
-        if (data instanceof Account){
+        if (data instanceof Account) {
             Picasso.with(me).load(((Account) data).avatarUrl).into(mSettingUsericon);
             Picasso.with(me).load(((Account) data).avatarUrl).into(mHomeIvUsericon);
 

@@ -3,20 +3,18 @@ package com.hanboard.teacher.app.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
+import android.view.Window;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.hanboard.teacher.R;
 import com.hanboard.teacher.app.adapter.CreateLessonsLvAdapter;
 import com.hanboard.teacher.common.base.BaseActivity;
 import com.hanboard.teacher.common.callback.IDataCallback;
+import com.hanboard.teacher.common.tools.ImmersedStatubarUtils;
 import com.hanboard.teacher.entity.Domine;
 import com.hanboard.teacher.entity.Lessons;
 import com.hanboard.teacher.entity.MData;
@@ -40,6 +38,8 @@ import butterknife.OnClick;
 public class CreateLessonsDatilsActivity extends BaseActivity implements IDataCallback<Domine> {
     @BindView(R.id.tv_create_lessons_chapter)
     TextView tvCreateLessonsChapter;
+    @BindView(R.id.top)
+    RelativeLayout topView;
     @BindView(R.id.lv_create_lessons_datils)
     SlideAndDragListView lvCreateLessonsDatils;
     private ISelectTextBookModel iSelectTextBookModel;
@@ -51,8 +51,10 @@ public class CreateLessonsDatilsActivity extends BaseActivity implements IDataCa
 
     @Override
     protected void initContentView(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_create_lessons_datils);
         ButterKnife.bind(this);
+        ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         iSelectTextBookModel = new SelectTextBookModelImpl();
         Intent intent = getIntent();
         chapter = (Node) intent.getSerializableExtra("chapter");

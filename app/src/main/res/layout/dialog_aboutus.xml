@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/border_line_baise_bg"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#f0f0f0" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="四川汉博德\n信息技术有限公司" />
+</LinearLayout>

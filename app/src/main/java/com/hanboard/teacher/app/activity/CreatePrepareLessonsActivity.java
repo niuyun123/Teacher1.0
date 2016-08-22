@@ -6,7 +6,9 @@ import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import com.hanboard.teacher.R;
 import com.hanboard.teacher.app.adapter.TextBookRecyleAdapter;
 import com.hanboard.teacher.common.base.BaseActivity;
 import com.hanboard.teacher.common.callback.IDataCallback;
+import com.hanboard.teacher.common.tools.ImmersedStatubarUtils;
 import com.hanboard.teacher.common.view.CustomDialog;
 import com.hanboard.teacher.entity.Domine;
 import com.hanboard.teacher.entity.Elements;
@@ -40,6 +43,8 @@ import butterknife.OnClick;
 public class CreatePrepareLessonsActivity extends BaseActivity implements IDataCallback<Domine>,TextBookRecyleAdapter.OnRecyclerViewItemClickListener,TextBookRecyleAdapter.MyItemLongClickListener {
     @BindView(R.id.img_create_lessons_add_textbook)
     ImageView mImgCreateLessonsAddTextbook;
+    @BindView(R.id.top)
+    LinearLayout topView;
     private IGetPrepareCourse mIGetPrepareCourse;
     private List<PrepareSelectCourse> textBooks = new ArrayList<>();
     @BindView(R.id.create_textbook_rcw)
@@ -55,8 +60,10 @@ public class CreatePrepareLessonsActivity extends BaseActivity implements IDataC
     private TextBook t;
     @Override
     protected void initContentView(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_create_prepare_lessons);
         ButterKnife.bind(me);
+        ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         mIGetPrepareCourse = new GetPrepareCourse();
         iSubjectModel = new SelectTextBookModelImpl();
         loadData();

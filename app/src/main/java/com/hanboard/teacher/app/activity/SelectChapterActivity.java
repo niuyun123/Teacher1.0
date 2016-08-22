@@ -4,16 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.Window;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hanboard.teacher.R;
-import com.hanboard.teacher.app.adapter.PrepareChapterAdapter;
 import com.hanboard.teacher.app.adapter.TextBookAllChapterAdapter;
 import com.hanboard.teacher.app.adapter.TreeListViewAdapter;
 import com.hanboard.teacher.common.base.BaseActivity;
 import com.hanboard.teacher.common.callback.IDataCallback;
+import com.hanboard.teacher.common.tools.ImmersedStatubarUtils;
 import com.hanboard.teacher.common.view.CustomDialog;
 import com.hanboard.teacher.entity.Chapter;
 import com.hanboard.teacher.entity.Domine;
@@ -27,7 +28,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SelectChapterActivity extends BaseActivity implements IDataCallback<Domine>,TreeListViewAdapter.OnTreeNodeClickListener {
-
+    @BindView(R.id.top)
+    RelativeLayout topView;
     @BindView(R.id.lv_select_textbook_chapter)
     ListView mLvSelectTextbookChapter;
     @BindView(R.id.tv_select_lessons_title)
@@ -37,9 +39,11 @@ public class SelectChapterActivity extends BaseActivity implements IDataCallback
     private TextBookAllChapterAdapter<Chapter> mAdapter;
     @Override
     protected void initContentView(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_select_chapter);
         mIPrepareLessonsModel = new PrepareLessonsModelImpl();
         ButterKnife.bind(this);
+        ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         Intent intent = getIntent();
         mTextbookId = intent.getStringExtra("tid");
         mTvSelectLessonsTitle.setText(intent.getStringExtra("tname"));

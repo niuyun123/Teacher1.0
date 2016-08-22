@@ -12,7 +12,8 @@ import android.support.v4.view.ViewPager;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.Window;
+import android.widget.LinearLayout;
 
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -27,6 +28,7 @@ import com.hanboard.teacher.common.config.BaseMap;
 import com.hanboard.teacher.common.config.CoderConfig;
 import com.hanboard.teacher.common.config.Constants;
 import com.hanboard.teacher.common.config.Urls;
+import com.hanboard.teacher.common.tools.ImmersedStatubarUtils;
 import com.hanboard.teacher.common.view.DowloadDialog;
 import com.hanboard.teacher.entity.LoadRes;
 import com.hanboard.teacher.entity.MData;
@@ -56,6 +58,8 @@ public class AddLessonsDatilsActivity extends BaseActivity {
     SegmentTabLayout tl;
     @BindView(R.id.vp_2)
     ViewPager vp;
+    @BindView(R.id.top)
+    LinearLayout topView;
     private String[] mTitles = {"教案", "课件", "习题"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private MyPagerAdapter mAdapter;
@@ -66,8 +70,10 @@ public class AddLessonsDatilsActivity extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_add_lessons_datils);
         ButterKnife.bind(this);
+        ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         getData();
         init();
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
