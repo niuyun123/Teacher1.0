@@ -31,7 +31,7 @@ public class Urls {
     /**通过章节id 账号id 课本id获取该章节下所有备课信息*/
     public static final String URL_GETLESSONS = SERVER_ADDRESS+"api/v1/chaptercontent/findByChapterId";
     /** App更新地址 */
-    public static final String UPDATE_URL = SERVER_ADDRESS+"api/v1/publicfunction/versionupdate";
+    public static final String UPDATE_URL = SERVER_ADDRESS+"api/v1/version/versionupdateMobile";
     /**
      * 获取授课课本信息
      */
@@ -83,7 +83,7 @@ public class Urls {
     /*上传头像*/
     public static final String URL_USERICON = SERVER_ADDRESS + "api/v1/user/uploadAvatarUrl";
     /*上传建议*/
-    public static final String URL_SUGESTION= SERVER_ADDRESS + "api/v1/publicfunction/addOpinion";
+    public static final String URL_SUGESTION= SERVER_ADDRESS + "api/v1/opinion/addOpinion";
     /*上传备课无文件*/
     public static final String URL_ADDLESSONSINFO_NOTFILE = SERVER_ADDRESS + "api/v1/content/addContentInfoNotFile";
 }
