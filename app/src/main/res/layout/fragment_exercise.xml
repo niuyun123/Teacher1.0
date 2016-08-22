@@ -1,0 +1,16 @@
+<name.quanke.app.libs.emptylayout.EmptyLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/emptLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hanboard.teacher.app.fragment.ExerciseFragment">
+    <GridView
+        android:id="@+id/exercise_content"
+        android:numColumns="3"
+        android:verticalSpacing="8dp"
+        android:horizontalSpacing="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></GridView>
+
+</name.quanke.app.libs.emptylayout.EmptyLayout>

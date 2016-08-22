@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginLeft="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <TextView
+       android:padding="8dp"
+       android:id="@+id/plan_tv_title"
+       android:background="@mipmap/planicon"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="@color/white"
+       android:textSize="16sp"
+       android:text="教学目的"/>
+    <TextView
+        android:lineSpacingExtra="4dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/plan_tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.教学目的我的心回顾的大眼\n2.中心思想\n3.作者主要想表达的情愫"/>
+</LinearLayout>

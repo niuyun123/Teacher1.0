@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="#000000"
+    android:id="@+id/top"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hanboard.teacher.app.activity.MedioPlayer">
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
+        android:layout_marginTop="12dp"
+        android:id="@+id/mediaplayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
+</LinearLayout>

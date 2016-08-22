@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hanboard.teacher.app.fragment.CouseWareFragment">
+<GridView
+    android:id="@+id/course"
+    android:numColumns="3"
+    android:verticalSpacing="8dp"
+    android:horizontalSpacing="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></GridView>
+    <TextView
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="没有获取到数据"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_detailempty"></TextView>
+
+</RelativeLayout>

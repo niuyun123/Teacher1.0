@@ -1,0 +1,15 @@
+<resources>
+    <color name="colorPrimary">#5EAFEC</color>
+    <color name="colorPrimaryDark">#5EAFEC</color>
+    <color name="colorAccent">#f0f0f0</color>
+    <color name="theme_color">#3c8ac3</color>
+    <color name="white">#ffffff</color>
+    <color name="left_nav_bar">#2A3D4B</color>
+    <color name="black">#9fc6fb</color>
+    <color name="black_a10_color">#C6CFDF</color>
+    <color name="blacktitle">#3c8ac3</color>
+    <color name="translucent_background">#00000000</color>
+    <color name="blackstartcolor">#1B3E64</color>
+    <color name="blackendcolor">#596DB4</color>
+    <color name="bg_popwindow">#7D7D7D</color>
+</resources>

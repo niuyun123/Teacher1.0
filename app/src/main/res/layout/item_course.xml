@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="8dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:background="@drawable/bg_course_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/course_subject"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="语文"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/course_suitage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:background="@drawable/bg_course_item_right"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="@color/theme_color"
+            android:id="@+id/course_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="声音的产生于传播"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/course_classhour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="课时 (1)" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#cccccc" />
+        <TextView
+            android:layout_marginLeft="8dp"
+            android:id="@+id/course_createtime"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="修改时间: 2016-07-01 10:28" />
+
+        <TextView
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/course_modifyime"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="修改时间: 2016-07-01 10:28" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
