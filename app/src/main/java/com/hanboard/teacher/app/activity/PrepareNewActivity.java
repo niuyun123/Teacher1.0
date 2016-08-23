@@ -46,7 +46,7 @@ public class PrepareNewActivity extends BaseActivity implements IDataCallback<Do
     private CourseAdapter mAdpter;
     public static String CONTENTID = "contentId";
     public static String CONTENTTITLE = "contentTitle";
-    private String mSuitName;
+    private String mSuitName=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,14 +58,23 @@ public class PrepareNewActivity extends BaseActivity implements IDataCallback<Do
     }
     private void initData() {
         Bundle bundle = getIntent().getExtras();
-        mSuitName=bundle.getString(PrepareActivity.SUIT_AGE);
-        String bookId = bundle.getString(PrepareActivity.TEXTBOOK_ID);
-        mAdpter = new CourseAdapter(this, R.layout.item_course, chapters,mSuitName);
-        mCourseGv.setAdapter(mAdpter);
-        mCourseGv.setOnItemClickListener(this);
-        iNewCuorseModel = new NewCourseiml();
-        showProgress("正在加载中....");
-        iNewCuorseModel.getNewCourse((String) SharedPreferencesUtils.getParam(me, "id", "null"),bookId, "1", this);
+        if (bundle!=null){
+            mSuitName = bundle.getString(PrepareActivity.SUIT_AGE,"");
+            String bookId = bundle.getString(PrepareActivity.TEXTBOOK_ID);
+            mAdpter = new CourseAdapter(this, R.layout.item_course, chapters, mSuitName);
+            mCourseGv.setAdapter(mAdpter);
+            mCourseGv.setOnItemClickListener(this);
+            iNewCuorseModel = new NewCourseiml();
+            showProgress("正在加载中....");
+            iNewCuorseModel.getNewCourse((String) SharedPreferencesUtils.getParam(me, "id", "null"), bookId, "1", this);
+        }else {
+            mAdpter = new CourseAdapter(this, R.layout.item_course, chapters, mSuitName);
+            mCourseGv.setAdapter(mAdpter);
+            mCourseGv.setOnItemClickListener(this);
+            iNewCuorseModel = new NewCourseiml();
+            showProgress("正在加载中....");
+            iNewCuorseModel.getNewCourse((String) SharedPreferencesUtils.getParam(me, "id", "null"),"", "1", this);
+        }
     }
     @Override
     protected void initContentView(Bundle savedInstanceState) {

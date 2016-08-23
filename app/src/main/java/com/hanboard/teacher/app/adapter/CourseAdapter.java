@@ -36,6 +36,8 @@ public class CourseAdapter extends CommonAdapter<PrepareChapter> {
         viewHolder.setTextForTextView(R.id.course_classhour,"课时 ("+item.content.getCourseHour()+")");
         viewHolder.setTextForTextView(R.id.course_createtime, "创建时间:  "+ TimeUtils.getTime(item.getCreateTime(), TimeUtils.DATE_FORMAT_DATE));
         viewHolder.setTextForTextView(R.id.course_modifyime, "修改时间:  "+ TimeUtils.getTime( item.content.getUpdateTime(), TimeUtils.DATE_FORMAT_DATE));
-        viewHolder.setTextForTextView(R.id.course_suitage,mSuitName);
+        if (mSuitName != null) {
+            viewHolder.setTextForTextView(R.id.course_suitage,mSuitName);
+        }
     }
 }

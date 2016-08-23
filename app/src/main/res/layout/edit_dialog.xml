@@ -31,5 +31,5 @@
         android:textColor="@color/white"
         android:textSize="16dp"
         android:id="@+id/edit_dialog_ok"
-        android:background="@drawable/login_btn_bg"/>
+        android:background="@drawable/button_bg"/>
 </LinearLayout>

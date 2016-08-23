@@ -6,25 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".app.activity.HomeActivity">
+
     <LinearLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
-            android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:elevation="4dp"
             android:orientation="horizontal">
+
             <com.hanboard.teacher.common.view.CircleImageView
-                app:border_color="@color/blackstartcolor"
-                app:border_width="1dp"
                 android:id="@+id/home_iv_usericon"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_margin="8dp"
                 android:clickable="true"
-                android:src="@mipmap/default_user_icon" />
+                android:src="@mipmap/default_user_icon"
+                app:border_color="@color/blackstartcolor"
+                app:border_width="1dp" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -32,25 +36,29 @@
                 android:gravity="center"
                 android:text="智慧教育"
                 android:textSize="18sp" />
+
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_margin="8dp" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/black_a10_color" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
+
             <ListView
                 android:id="@+id/home_lv_function"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:dividerHeight="-5dp"
                 android:divider="#00000000"
+                android:dividerHeight="-5dp"
                 android:scrollbars="none">
 
             </ListView>
@@ -60,27 +68,27 @@
 
     <!--左边导航栏-->
     <LinearLayout
-        android:clickable="true"
-        android:layout_gravity="start"
         android:layout_width="250dp"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:background="@color/white"
+        android:clickable="true"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3">
+            android:layout_weight="2">
 
             <com.hanboard.teacher.common.view.CircleImageView
-                app:border_color="@color/blackstartcolor"
-                app:border_width="1dp"
-                android:clickable="true"
                 android:id="@+id/home_setting_usericon"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_centerInParent="true"
-                android:src="@mipmap/default_user_icon" />
+                android:clickable="true"
+                android:src="@mipmap/default_user_icon"
+                app:border_color="@color/blackstartcolor"
+                app:border_width="1dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -101,36 +109,47 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="4dp">
+
                 <ImageView
-                    android:clickable="true"
                     android:id="@+id/home_bt_clear"
-                    android:src="@mipmap/right_03"
-                    android:layout_marginRight="24dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_width="24dp"
-                    android:layout_height="24dp" />
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:clickable="true"
+                    android:src="@mipmap/right_03" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="清除缓存" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#cccccc" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="4dp">
+
                 <ImageView
-                    android:clickable="true"
                     android:id="@+id/home_update"
-                    android:src="@mipmap/right_03"
-                    android:layout_marginRight="24dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_width="24dp"
-                    android:layout_height="24dp" />
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:clickable="true"
+                    android:src="@mipmap/right_03" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -141,72 +160,87 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="4dp">
+
                 <ImageView
-                    android:clickable="true"
                     android:id="@+id/home_suggestion"
-                    android:src="@mipmap/right_03"
-                    android:layout_marginRight="24dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_width="24dp"
-                    android:layout_height="24dp" />
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:clickable="true"
+                    android:src="@mipmap/right_03" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="意见建议" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="4dp">
+
                 <ImageView
-                    android:clickable="true"
                     android:id="@+id/home_aboutus"
-                    android:src="@mipmap/right_03"
-                    android:layout_marginRight="24dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_width="24dp"
-                    android:layout_height="24dp" />
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:clickable="true"
+                    android:src="@mipmap/right_03" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="关于我们" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="4dp">
+
                 <TextView
                     android:id="@+id/home_tv_vsion"
-                    android:text="1.0"
-                    android:textColor="@color/theme_color"
-                    android:layout_marginRight="24dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp" />
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:text="1.0"
+                    android:textColor="@color/theme_color" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="当前版本:" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="4dp">
+
                 <TextView
-                    android:text="0816-235788"
-                    android:textColor="@color/theme_color"
-                    android:layout_marginRight="24dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp" />
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:text="0816-235788"
+                    android:textColor="@color/theme_color" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -219,21 +253,21 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_weight="1">
 
             <TextView
-                android:clickable="true"
                 android:id="@+id/home_exit"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:padding="12dp"
-                android:layout_margin="8dp"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:background="@drawable/bg_chapter_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="退出登录" />
+                android:layout_alignParentBottom="true"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_chapter_item"
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="退出登录"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
         </RelativeLayout>
     </LinearLayout>
 

@@ -9,9 +9,11 @@ package com.hanboard.teacher.common.config;
  */
 public class Urls {
     /**host*/
+     /*port*/
     public static final String SERVER_HOST = "http://110.186.73.233";
-    /*port*/
     public static final String SERVER_PORT = "2009/hanboardApp/";
+  /*  public static final String SERVER_HOST = "http://172.17.1.25";
+    public static final String SERVER_PORT = "8084/";*/
     /**SERVER_ADDRESS*/
     public static final String SERVER_ADDRESS = SERVER_HOST+":"+SERVER_PORT;
     /** 登录接口 */
@@ -83,7 +85,7 @@ public class Urls {
     /*上传头像*/
     public static final String URL_USERICON = SERVER_ADDRESS + "api/v1/user/uploadAvatarUrl";
     /*上传建议*/
-    public static final String URL_SUGESTION= SERVER_ADDRESS + "api/v1/opinion/addOpinion";
+    public static final String URL_SUGESTION= SERVER_ADDRESS + "api/v1/opinion";
     /*上传备课无文件*/
     public static final String URL_ADDLESSONSINFO_NOTFILE = SERVER_ADDRESS + "api/v1/content/addContentInfoNotFile";
 }

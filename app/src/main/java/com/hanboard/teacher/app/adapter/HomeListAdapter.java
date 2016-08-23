@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.hanboard.teacher.R;
 import com.hanboard.teacher.app.activity.CreatePrepareLessonsActivity;
 import com.hanboard.teacher.app.activity.PrepareActivity;
+import com.hanboard.teacher.app.activity.PrepareNewActivity;
+import com.hanboard.teacher.common.view.UserIconDialog;
+import com.hanboard.teacherhd.lib.common.utils.SharedPreferencesUtils;
 
 /**
  * Created by Administrator on 2016/8/16.
@@ -60,10 +63,10 @@ public class HomeListAdapter extends BaseAdapter {
                     Intent in=new Intent(context, PrepareActivity.class);
                     context.startActivity(in);
                 }else if(i==2){
-
+                    context.startActivity(new Intent(context,PrepareNewActivity.class));
 
                 }else {
-
+                    new UserIconDialog.Builder(context,(String) SharedPreferencesUtils.getParam(context, "userImg", "")).create().show();
 
                 }
 

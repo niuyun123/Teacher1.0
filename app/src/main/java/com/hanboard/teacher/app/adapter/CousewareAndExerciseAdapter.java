@@ -34,7 +34,7 @@ public class CousewareAndExerciseAdapter<T> extends CommonAdapter<T> {
                 if (exercisesTypeInt==1)
                     viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_ppt);
                 else if (exercisesTypeInt==2)
-                    viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_word);
+                    viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_doc);
                 else if (exercisesTypeInt==4)
                     viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_xls);
                 else if (exercisesTypeInt==5)
