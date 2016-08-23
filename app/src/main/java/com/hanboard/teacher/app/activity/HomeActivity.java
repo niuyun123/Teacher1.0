@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hanboard.teacher.R;
@@ -24,7 +23,6 @@ import com.hanboard.teacher.common.tools.ImmersedStatubarUtils;
 import com.hanboard.teacher.common.tools.VersionUtils;
 import com.hanboard.teacher.common.view.AboutUsDialog;
 import com.hanboard.teacher.common.view.CircleImageView;
-import com.hanboard.teacher.common.view.InterceptorFrameLayout;
 import com.hanboard.teacher.common.view.UserIconDialog;
 import com.hanboard.teacher.entity.Account;
 import com.hanboard.teacher.entity.Banner;
@@ -41,6 +39,7 @@ import com.hanboard.teacherhd.lib.common.utils.AppManager;
 import com.hanboard.teacherhd.lib.common.utils.SDCardHelper;
 import com.hanboard.teacherhd.lib.common.utils.SharedPreferencesUtils;
 import com.hanboard.teacherhd.lib.common.utils.ToastUtils;
+import com.hanboard.teacherhd.lib.refreshview.XRefreshView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,13 +64,15 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
     CircleImageView mSettingUsericon;
     @BindView(R.id.home_tv_vsion)
     TextView mVsion;
+    @BindView(R.id.home_refreshView)
+    XRefreshView refreshView;
     //检测登录跟新的接口
     private IVersionModel iVersionModel;
     private IUserModel iUserModel;
 
     // 用来存放Listview的条目文本内容的集合
-    private List<String> items = Arrays.asList("教师备课","教师授课");
-    private List<Integer> imgs= Arrays.asList(R.mipmap.img_prepare,R.mipmap.img_startclass);
+    private List<String> items = Arrays.asList("教师备课","教师授课","","");
+    private List<Integer> imgs= Arrays.asList(R.mipmap.img_prepare,R.mipmap.img_startclass,R.mipmap.img_black,R.mipmap.img_black);
     // 要显示的ListView
     private ListView mListView;
     // 用来存放轮播图图片的id
@@ -86,8 +87,15 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         ImmersedStatubarUtils.initAfterSetContentView(this, topView);
+        refreshView.setMoveForHorizontal(true);
+        // 设置是否可以下拉刷新
+        refreshView.setPullRefreshEnable(false);
+        // 设置是否可以上拉加载
+        refreshView.setPullLoadEnable(false);
+
         iAppModel = new AppModelImpl();
-        mListView = new ListView(this);
+        mListView = (ListView) findViewById(R.id.home_list);
+        mListView.setDividerHeight(0);
         iAppModel.getBanner(new IDataCallback<List<Banner>>() {
             @Override
             public void onSuccess(List<Banner> data) {
@@ -98,7 +106,8 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
                 mListView.setAdapter(new MainAdapter(items,imgs, mListView
                         .getHeaderViewsCount()));
                 mListView.setOnItemClickListener(HomeActivity.this);
-                RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
+
+               /* RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
                 InterceptorFrameLayout ifl = new InterceptorFrameLayout(
                         me);
 
@@ -109,7 +118,7 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
                 ifl.addInterceptorView(mHeaderView,
                         InterceptorFrameLayout.ORIENTATION_LEFT
                                 | InterceptorFrameLayout.ORIENTATION_RIGHT);
-                rl.addView(ifl);
+                rl.addView(ifl);*/
             }
 
             @Override

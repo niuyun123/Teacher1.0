@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="800dp"
     tools:context=".app.activity.HomeActivity">
+
     <LinearLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="800dp"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -37,27 +39,29 @@
 
             <TextView
                 android:id="@+id/home_newlycourse"
-                android:clickable="true"
-                android:gravity="center"
-                android:text="最近备课"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp" />
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="最近备课" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/black_a10_color" />
-        <RelativeLayout
+
+        <com.hanboard.teacherhd.lib.refreshview.XRefreshView
+            android:id="@+id/home_refreshView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-            <RelativeLayout android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:id="@+id/rl">
-            </RelativeLayout>
-        </RelativeLayout>
+            android:layout_height="800dp">
+<ListView
+    android:id="@+id/home_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></ListView>
+        </com.hanboard.teacherhd.lib.refreshview.XRefreshView>
+
 
     </LinearLayout>
 
@@ -216,11 +220,13 @@
                     android:gravity="center_vertical"
                     android:text="当前版本:" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="4dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
