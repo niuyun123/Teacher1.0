@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanboard.teacher"
-    android:versionCode="2"
+    android:versionCode="1"
     android:versionName="1.0.1.20160820_beta">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -24,13 +25,13 @@
         <activity android:name=".app.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".app.activity.LoginActivity" />
-        <activity android:name=".app.activity.HomeActivity"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".app.activity.HomeActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".app.activity.VersionActivity"
             android:theme="@style/dialogActivity" />
@@ -76,8 +77,8 @@
             android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".app.activity.PrepareNewActivity" />
-        <activity android:name=".app.activity.MineActivity"></activity>
-        <activity android:name=".app.activity.SugestionActivity"></activity>
+        <activity android:name=".app.activity.MineActivity" />
+        <activity android:name=".app.activity.SugestionActivity" />
         <!-- 配置APP ID -->
         <meta-data
             android:name="BUGLY_APPID"
@@ -90,6 +91,9 @@
         <meta-data
             android:name="BUGLY_ENABLE_DEBUG"
             android:value="true" />
+
+        <activity android:name=".app.activity.MainActivity">
+        </activity>
     </application>
 
 </manifest>

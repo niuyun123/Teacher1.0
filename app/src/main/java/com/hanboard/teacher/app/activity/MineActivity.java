@@ -29,6 +29,7 @@ import com.hanboard.teacher.entity.Domine;
 import com.hanboard.teacher.entity.Status;
 import com.hanboard.teacher.model.IUserModel;
 import com.hanboard.teacher.model.impl.UserModelImpl;
+import com.hanboard.teacherhd.lib.common.utils.AppManager;
 import com.hanboard.teacherhd.lib.common.utils.DESCoder;
 import com.hanboard.teacherhd.lib.common.utils.SharedPreferencesUtils;
 import com.hanboard.teacherhd.lib.common.utils.ToastUtils;
@@ -146,6 +147,7 @@ public class MineActivity extends BaseActivity implements IDataCallback<Domine> 
                 finish();
                 break;
             case R.id.login_out:
+                AppManager.getAppManager().finishActivity(HomeActivity.class);
                 startActivity(LoginActivity.class);
                 finish();
                 break;

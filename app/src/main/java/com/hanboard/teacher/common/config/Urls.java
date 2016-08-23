@@ -7,6 +7,7 @@ package com.hanboard.teacher.common.config;
  * 作者单位：四川汉博德信息技术有限公司
  * 创建时间：2016/8/9 0009 16:44
  */
+//上传最新版本地址:http://110.186.73.233:2009/hanboardApp/updateVersion
 public class Urls {
     /**host*/
      /*port*/

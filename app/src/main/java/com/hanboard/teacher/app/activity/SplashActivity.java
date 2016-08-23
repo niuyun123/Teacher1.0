@@ -54,7 +54,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         mTimer = new Timer();
         //计时器执行调度,延迟1秒执行一次

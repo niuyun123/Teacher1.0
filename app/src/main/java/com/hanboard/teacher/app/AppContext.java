@@ -1,6 +1,7 @@
 package com.hanboard.teacher.app;
 
 import android.app.Application;
+import android.os.Handler;
 
 import com.hanboard.teacherhd.lib.common.http.okhttp.OkHttpUtils;
 import com.hanboard.teacherhd.lib.common.http.okhttp.log.LoggerInterceptor;
@@ -20,6 +21,11 @@ public class AppContext extends Application {
     private static boolean isLogged = false;
     private static AppContext instance;
     public static int mNetWorkState;
+    private static Handler mHandler = new Handler() {
+    };
+    public static Handler getMainThreadHandler() {
+        return mHandler;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
