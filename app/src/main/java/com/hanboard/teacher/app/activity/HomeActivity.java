@@ -6,7 +6,6 @@ import android.os.Message;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -82,7 +81,7 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
        // ImmersedStatubarUtils.initAfterSetContentView(this, topView);
@@ -95,6 +94,7 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
         iAppModel = new AppModelImpl();
         mListView = (ListView) findViewById(R.id.home_list);
         mListView.setDividerHeight(0);
+        mListView.setVerticalScrollBarEnabled(true);
         iAppModel.getBanner(new IDataCallback<List<Banner>>() {
             @Override
             public void onSuccess(List<Banner> data) {
