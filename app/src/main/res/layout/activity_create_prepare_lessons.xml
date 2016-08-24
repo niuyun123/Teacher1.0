@@ -21,7 +21,6 @@
             android:layout_height="24dp"
             android:layout_margin="8dp"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
             android:src="@mipmap/back" />
         <TextView
             android:layout_width="wrap_content"
@@ -30,12 +29,12 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@mipmap/add_08_07"
                 android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:id="@+id/img_create_lessons_add_textbook" />
     </RelativeLayout>
     <View
