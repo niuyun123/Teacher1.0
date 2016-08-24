@@ -2,15 +2,10 @@ package com.hanboard.teacher.app.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -45,9 +40,10 @@ public class TextBookRecyleAdapter extends RecyclerView.Adapter<TextBookRecyleAd
     public MyViewhoder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new MyViewhoder(LayoutInflater.from(context).inflate(R.layout.create_textbook_item,parent,false));
     }
+
     @Override
     public void onBindViewHolder(final MyViewhoder holder, final int position) {
-        holder.subject_name.setText(prepareSelectCourses.get(position).getSubjectName()+"（"+prepareSelectCourses.get(position).teachBookName+"）");
+        holder.subject_name.setText(prepareSelectCourses.get(position).getSubjectName()/*+"（"+prepareSelectCourses.get(position).teachBookName+"）"*/);
         holder.version_name.setText(prepareSelectCourses.get(position).getVersionName());
         holder.nianji_name.setText(prepareSelectCourses.get(position).getSuitObjectName());
         holder.content.setOnClickListener(new View.OnClickListener() {

@@ -19,7 +19,6 @@ import com.hanboard.teacher.common.base.BaseActivity;
 import com.hanboard.teacher.common.callback.IDataCallback;
 import com.hanboard.teacher.common.callback.UpdateCallback;
 import com.hanboard.teacher.common.tools.ClearSdCard;
-import com.hanboard.teacher.common.tools.ImmersedStatubarUtils;
 import com.hanboard.teacher.common.tools.VersionUtils;
 import com.hanboard.teacher.common.view.AboutUsDialog;
 import com.hanboard.teacher.common.view.CircleImageView;
@@ -71,8 +70,8 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
     private IUserModel iUserModel;
 
     // 用来存放Listview的条目文本内容的集合
-    private List<String> items = Arrays.asList("教师备课","教师授课","","");
-    private List<Integer> imgs= Arrays.asList(R.mipmap.img_prepare,R.mipmap.img_startclass,R.mipmap.img_black,R.mipmap.img_black);
+    private List<String> items = Arrays.asList("教师备课","教师授课","");
+    private List<Integer> imgs= Arrays.asList(R.mipmap.img_prepare,R.mipmap.img_startclass,R.mipmap.img_black);
     // 要显示的ListView
     private ListView mListView;
     // 用来存放轮播图图片的id
@@ -86,7 +85,7 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-        ImmersedStatubarUtils.initAfterSetContentView(this, topView);
+       // ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         refreshView.setMoveForHorizontal(true);
         // 设置是否可以下拉刷新
         refreshView.setPullRefreshEnable(false);
@@ -106,7 +105,6 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
                 mListView.setAdapter(new MainAdapter(items,imgs, mListView
                         .getHeaderViewsCount()));
                 mListView.setOnItemClickListener(HomeActivity.this);
-
                /* RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
                 InterceptorFrameLayout ifl = new InterceptorFrameLayout(
                         me);
@@ -123,7 +121,13 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
 
             @Override
             public void onError(String msg, int code) {
-
+              ToastUtils.showShort(me,"获取数据失败");
+                ViewHolder holder = new ViewHolder(resList);
+                View mHeaderView = holder.getRootView();
+                mListView.addHeaderView(mHeaderView);
+                mListView.setAdapter(new MainAdapter(items,imgs, mListView
+                        .getHeaderViewsCount()));
+                mListView.setOnItemClickListener(HomeActivity.this);
             }
         });
         AppManager.getAppManager().addActivity(this);

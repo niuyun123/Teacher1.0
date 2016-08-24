@@ -67,7 +67,6 @@ public class AddLessonsDatilsActivity extends BaseActivity {
     private String keshi;
     private String kexing;
     private DowloadDialog mProgress;
-
     @Override
     protected void initContentView(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);

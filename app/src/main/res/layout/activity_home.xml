@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_layout"
     android:layout_width="match_parent"
-    android:layout_height="800dp"
+    android:layout_height="match_parent"
     tools:context=".app.activity.HomeActivity">
 
     <LinearLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
-        android:layout_height="800dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -67,13 +67,12 @@
 
     <!--左边导航栏 -->
     <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:clickable="true"
         android:orientation="vertical">
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -99,12 +98,17 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="16dp"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:orientation="vertical">
-
+            <View
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black_a10_color" />
             <RelativeLayout
                 android:id="@+id/home_bt_clear"
                 android:layout_width="match_parent"
@@ -125,11 +129,12 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="清除缓存" />
-
                 <View
+                    android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
-                    android:background="#cccccc" />
+                    android:background="@color/black_a10_color" />
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -152,6 +157,11 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="检测更新" />
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/black_a10_color" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -174,6 +184,11 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="意见建议" />
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/black_a10_color" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -196,6 +211,11 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="关于我们" />
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/black_a10_color" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -219,6 +239,11 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="当前版本:" />
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/black_a10_color" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -241,6 +266,11 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="联系我们  " />
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/black_a10_color" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -248,7 +278,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="2">
 
             <TextView
                 android:id="@+id/home_exit"

@@ -55,8 +55,10 @@ public class Urls {
      *通过备课信息ID获取备课信息详细信息
      */
     public static  final  String URL_GETPRECOURSEWARE=SERVER_ADDRESS+"api/v1/content/findInfoByContentId";
-    /**获取app——banner*/
-    public static final String URL_GETBANNER = SERVER_ADDRESS+"api/v1/banner/andriodPadQueryBanner";
+    /**获取app——banner(平板)*/
+    // public static final String URL_GETBANNER = SERVER_ADDRESS+"api/v1/banner/andriodPadQueryBanner";
+    /**获取app——banner(手机)*/
+   public static final String URL_GETBANNER = SERVER_ADDRESS+"api/v1/banner/andriodMobileQueryBanner";
     /**
      * 获取最近备课信息
      */

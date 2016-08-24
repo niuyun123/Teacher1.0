@@ -3,10 +3,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hanboard.teacher.R;
 import com.hanboard.teacher.app.AppContext;
+import com.hanboard.teacher.common.tools.DisplayUtil;
 
 import java.util.List;
 public class MainAdapter extends BaseAdapter {
@@ -51,7 +53,15 @@ public class MainAdapter extends BaseAdapter {
 			convertView.setTag(holder);
 			holder.tv = (TextView) convertView.findViewById(R.id.mian_tv_prepare);
 			holder.iv= (ImageView) convertView.findViewById(R.id.mian_iv_prepare);
+
+			if (position==2){
+				RelativeLayout layout= (RelativeLayout) convertView.findViewById(R.id.main_rvl_item);
+				RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) layout.getLayoutParams();
+				params.height= DisplayUtil.dip2px(AppContext.getInstance(),225);
+				layout.setLayoutParams(params);
+			}
 		}
+
 		holder.tv.setText(items.get(position));
 		holder.iv.setImageResource(imgs.get(position));
 		return convertView;
@@ -60,5 +70,6 @@ public class MainAdapter extends BaseAdapter {
 	class ListViewItemHolder {
 		TextView tv;
 		ImageView iv;
+
 	}
 }

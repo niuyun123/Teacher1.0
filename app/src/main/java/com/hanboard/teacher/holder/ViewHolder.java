@@ -2,6 +2,8 @@ package com.hanboard.teacher.holder;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -24,7 +26,7 @@ import java.util.List;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
-public class ViewHolder implements OnTouchListener {
+public class ViewHolder implements OnTouchListener,ViewPager.OnPageChangeListener {
 	// 返回的view
 	private View viewToReturn;
 	// 所有图片资源文件的id集合
@@ -36,7 +38,9 @@ public class ViewHolder implements OnTouchListener {
 	private RelativeLayout.LayoutParams rlp;
 	// 自动播放的任务
 	private AutoPlayTask autoPlayTask;
+	private ImageView cirlce1,cirlce2,cirlce3;
 	private final int AUOT_PLAY_TIME = 3000;
+	private int flag=0;
 	public ViewHolder(List<Banner> data) {
 		viewToReturn = initView();
 		viewToReturn.setTag(this);
@@ -65,20 +69,25 @@ public class ViewHolder implements OnTouchListener {
 	/** 初始化view的方法 ，返回一个view */
 	protected View initView() {
 		// 初始化头布局
-		RelativeLayout mHeaderView = new RelativeLayout(
-				AppContext.getInstance());
-
+		//RelativeLayout mHeaderView = new RelativeLayout(AppContext.getInstance());
+		RelativeLayout mHeaderView= (RelativeLayout) LayoutInflater.from(AppContext.getInstance()).inflate(
+				R.layout.mianlist_header, null);
 		// 设置轮播图的宽高
 		// 设置LayoutParams的时候，一定要带一个父容器的限制，这里使用AbsListView的原因是因为，Listview没有.LayoutParams选项
 		// 此处让宽度是EXACTLY，而高度不是，所以测量时会以宽度为准
 		mHeaderView.setLayoutParams(new AbsListView.LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		viewPager = new SmartViewPager(AppContext.getInstance());
-		viewPager = (SmartViewPager) View.inflate(AppContext.getInstance(),
-				R.layout.mianlist_header, null);
-
+		//viewPager = new SmartViewPager(AppContext.getInstance());
+		//viewPager = (SmartViewPager) View.inflate(AppContext.getInstance(), R.layout.mianlist_header, null);
+          viewPager= (SmartViewPager) mHeaderView.findViewById(R.id.mianlist_header_viewpager);
+		viewPager.addOnPageChangeListener(this);
+		viewPager.setCurrentItem(496);
+		cirlce1= (ImageView) mHeaderView.findViewById(R.id.circle1);
+		cirlce1.setImageResource(R.mipmap.circleon);
+		cirlce2= (ImageView) mHeaderView.findViewById(R.id.circle2);
+		cirlce3= (ImageView) mHeaderView.findViewById(R.id.circle3);
 		// 改为在xml布局文件中设置自定义属性
-		// viewPager.setRatio(16 / 9.0f);
+		 //viewPager.setRatio(16 / 9.0f);
 
 		rlp = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -100,9 +109,37 @@ public class ViewHolder implements OnTouchListener {
 		viewPager.setOnTouchListener(this);
 
 		// 把轮播图添加到header中去，添加也要按照次序，先添加的在下面
-		mHeaderView.addView(viewPager);
+		//mHeaderView.addView(viewPager);
 
 		return mHeaderView;
+	}
+
+	@Override
+	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+	}
+
+	@Override
+	public void onPageSelected(int position) {
+          //resertCirle();
+		if (position%3==0){
+			resertCirle();
+			cirlce1.setImageResource(R.mipmap.circleon);
+		}else if (position%3==1){
+			resertCirle();
+			cirlce2.setImageResource(R.mipmap.circleon);
+
+		}else if (position%3==2){
+			resertCirle();
+			cirlce3.setImageResource(R.mipmap.circleon);
+
+		}
+
+	}
+
+	@Override
+	public void onPageScrollStateChanged(int state) {
+
 	}
 
 	private class ViewPagerAdapter extends PagerAdapter {
@@ -126,10 +163,14 @@ public class ViewHolder implements OnTouchListener {
 			imageView.setImageDrawable(drawable);
 */
 			// 如果是从网络获取图片的话，必须增加这个属性，缩放，填充控件
-			Picasso.with(AppContext.getInstance()).load(mDatas.get(position% mDatas.size()).imageUrl).into(imageView);
-			imageView.setScaleType(ScaleType.FIT_XY);// 每个imageview都可以设置两个源：backGround是imageview本身的大小，而src是设置的图片的大小
-			container.addView(imageView);
+			if (mDatas.size()>0){
+				Picasso.with(AppContext.getInstance()).load(mDatas.get(position% mDatas.size()).imageUrl).into(imageView);
+				imageView.setScaleType(ScaleType.FIT_XY);// 每个imageview都可以设置两个源：backGround是imageview本身的大小，而src是设置的图片的大
 
+			}else {
+				imageView.setImageResource(R.mipmap.img_black);
+			}
+			container.addView(imageView);
 			return imageView;
 		}
 
@@ -151,9 +192,24 @@ public class ViewHolder implements OnTouchListener {
 		public void run() {
 			// 运行的方法
 			if (IS_PALYING) {
-				viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+				Log.i("hahahaha", "run: ========"+viewPager.getCurrentItem());
+				viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
 				AppContext.getMainThreadHandler().postDelayed(this,
 						AUOT_PLAY_TIME);
+				/*if (viewPager.getCurrentItem()%3==0){
+					resertCirle();
+					cirlce2.setImageResource(R.mipmap.circleon);
+
+				}else if (viewPager.getCurrentItem()%3==1){
+					resertCirle();
+					cirlce3.setImageResource(R.mipmap.circleon);
+
+				}else if (viewPager.getCurrentItem()%3==2){
+					resertCirle();
+					cirlce1.setImageResource(R.mipmap.circleon);
+
+				}*/
+
 			}
 		}
 
@@ -212,5 +268,10 @@ public class ViewHolder implements OnTouchListener {
 		}catch (IllegalAccessException e){
 
 		}
+	}
+	public void resertCirle(){
+		cirlce1.setImageResource(R.mipmap.circleof);
+		cirlce2.setImageResource(R.mipmap.circleof);
+		cirlce3.setImageResource(R.mipmap.circleof);
 	}
 }

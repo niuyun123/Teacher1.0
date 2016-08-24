@@ -16,6 +16,7 @@
             android:orientation="vertical"
             android:gravity="center">
             <TextView
+                android:textSize="24sp"
                 android:id="@+id/subject_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -23,14 +24,14 @@
                 android:text="物理"/>
             <TextView
                 android:id="@+id/version_name"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="人教版"/>
             <TextView
                 android:id="@+id/nianji_name"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="高二下册"/>
