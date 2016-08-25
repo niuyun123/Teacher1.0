@@ -40,10 +40,12 @@ public class AddLessonsActivity extends BaseActivity {
     private String mKexing;
     private List<Pickers> list = new ArrayList<>();
     private WheelView mWlwSelect;
+    public static AddLessonsActivity instance = null;
     @Override
     protected void initContentView(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_add_lessons);
+        instance= this;
         ButterKnife.bind(this);
         ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         Pickers p = new Pickers("新授课","1");
@@ -82,7 +84,7 @@ public class AddLessonsActivity extends BaseActivity {
                     intent.putExtra("title",mTitle);
                     intent.putExtra("keshi",mKeshi);
                     intent.putExtra("kexing",mKexing);
-                    intent.setClass(me,AddLessonsDatilsActivity.class);
+                    intent.setClass(me,UpLoadLessonsActivity.class);
                     startActivity(intent);
                 }
                 break;

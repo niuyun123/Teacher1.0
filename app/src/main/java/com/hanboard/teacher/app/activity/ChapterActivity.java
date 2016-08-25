@@ -19,6 +19,7 @@ import com.hanboard.teacher.entity.listentity.ListChapter;
 import com.hanboard.teacher.entity.tree.Node;
 import com.hanboard.teacher.model.IPrepareLessonsModel;
 import com.hanboard.teacher.model.impl.PrepareLessonsModelImpl;
+import com.hanboard.teacherhd.lib.refreshview.XRefreshView;
 
 import java.util.List;
 
@@ -31,11 +32,14 @@ public class ChapterActivity extends BaseActivity implements IDataCallback<Domin
     ListView mLvChapterList;
     @BindView(R.id.top)
     LinearLayout topView;
+    @BindView(R.id.chapter_refreshView)
+    XRefreshView mRefreshView;
     private IPrepareLessonsModel iPrepareLessonsModel;
     private TreeListViewAdapter mAdapter;
     private String mBookId;
     private String mSuitName;
     public static final String CHAPTERID = "chapterid";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,29 @@ public class ChapterActivity extends BaseActivity implements IDataCallback<Domin
         setContentView(R.layout.activity_chapter);
         ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         ButterKnife.bind(this);
+        mRefreshView.setPullLoadEnable(false);
+        mRefreshView.setPullRefreshEnable(true);
+       mRefreshView.setXRefreshViewListener(new XRefreshView.XRefreshViewListener() {
+           @Override
+           public void onRefresh() {
+               iPrepareLessonsModel.getChapterList("2", mBookId, "", "", ChapterActivity.this);
+           }
+
+           @Override
+           public void onLoadMore(boolean isSilence) {
+
+           }
+
+           @Override
+           public void onRelease(float direction) {
+
+           }
+
+           @Override
+           public void onHeaderMove(double offset, int offsetY) {
+
+           }
+       });
         initData();
     }
 
@@ -80,6 +107,7 @@ public class ChapterActivity extends BaseActivity implements IDataCallback<Domin
                 mLvChapterList.setAdapter(mAdapter);
                 mAdapter.setOnTreeNodeClickListener(this);
                 disProgress();
+                mRefreshView.stopRefresh();
                 //BookAndChapterId bookAndChapterId = new BookAndChapterId(this, chapters.get(0).getId());
                 //SharedPreferencesUtils.setParam(this, BOOKANDCHAPTERID, bookAndChapterId);
             } catch (IllegalAccessException e) {
@@ -90,6 +118,7 @@ public class ChapterActivity extends BaseActivity implements IDataCallback<Domin
 
     @Override
     public void onError(String msg, int code) {
+        mRefreshView.stopRefresh();
         disProgress();
     }
 

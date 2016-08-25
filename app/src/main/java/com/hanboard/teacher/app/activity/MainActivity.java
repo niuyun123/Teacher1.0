@@ -132,7 +132,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     public void onSuccess(List<Banner> data) {
         resList = data;
-        ViewHolder holder = new ViewHolder(resList);
+        ViewHolder holder = new ViewHolder(resList,me);
         View mHeaderView = holder.getRootView();
         mListView.addHeaderView(mHeaderView);
         mListView.setAdapter(new MainAdapter(items, imgs, mListView

@@ -41,6 +41,9 @@ public class CousewareAndExerciseAdapter<T> extends CommonAdapter<T> {
                     viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_mp3);
                 else if (exercisesTypeInt==6)
                     viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_mp4);
+                else if (exercisesTypeInt==7){
+                    viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_photo);
+                }
                 else  if (exercisesTypeInt==8)
                     viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_pdf);
                 else  viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_pdf);
@@ -59,6 +62,9 @@ public class CousewareAndExerciseAdapter<T> extends CommonAdapter<T> {
                     viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_mp3);
                 else if (courseWareTypeInt==6)
                     viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_mp4);
+                else if (courseWareTypeInt==7){
+                    viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_photo);
+                }
                 else  if (courseWareTypeInt==8)
                     viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_pdf);
                 else  viewHolder.setImageForView(R.id.file_imglog, R.mipmap.log_pdf);

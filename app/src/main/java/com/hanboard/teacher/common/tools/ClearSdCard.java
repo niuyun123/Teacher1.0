@@ -2,7 +2,8 @@ package com.hanboard.teacher.common.tools;
 
 import android.content.Context;
 import android.os.Looper;
-import android.widget.Toast;
+
+import com.hanboard.teacherhd.lib.common.utils.ToastUtils;
 
 import java.io.File;
 
@@ -34,7 +35,7 @@ public class ClearSdCard {
 
                 }*/
                 Looper.prepare();
-                Toast.makeText(context, "SD卡缓存清理完成", Toast.LENGTH_SHORT).show();
+                ToastUtils.showShort(context, "SD卡缓存清理完成");
                 Looper.loop();
             }
         }).start();

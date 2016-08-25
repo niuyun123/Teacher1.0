@@ -99,7 +99,7 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
             @Override
             public void onSuccess(List<Banner> data) {
                 resList= (List<Banner>) data;
-                ViewHolder holder = new ViewHolder(resList);
+                ViewHolder holder = new ViewHolder(resList,me);
                 View mHeaderView = holder.getRootView();
                 mListView.addHeaderView(mHeaderView);
                 mListView.setAdapter(new MainAdapter(items,imgs, mListView
@@ -122,7 +122,7 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
             @Override
             public void onError(String msg, int code) {
               ToastUtils.showShort(me,"获取数据失败");
-                ViewHolder holder = new ViewHolder(resList);
+                ViewHolder holder = new ViewHolder(resList,me);
                 View mHeaderView = holder.getRootView();
                 mListView.addHeaderView(mHeaderView);
                 mListView.setAdapter(new MainAdapter(items,imgs, mListView
@@ -229,7 +229,6 @@ public class HomeActivity extends BaseActivity implements UpdateCallback, IDataC
             Picasso.with(me).load(((Account) data).avatarUrl).into(mHomeIvUsericon);
         }
     }
-
     @Override
     public void onError(String msg, int code) {
 

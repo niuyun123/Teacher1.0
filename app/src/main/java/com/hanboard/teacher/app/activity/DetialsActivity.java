@@ -55,7 +55,6 @@ public class DetialsActivity extends BaseActivity implements IDataCallback<Domin
     public static String TEACHINGPLAN = "teachplan";
     public static String COURSEWARES = "coursewares";
     public static String EXERCISES = "exercise";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +73,6 @@ public class DetialsActivity extends BaseActivity implements IDataCallback<Domin
         }else
         initData();
     }
-
     private void initData() {
         Bundle extras = getIntent().getExtras();
         String mCourseId = extras.getString(CourseActivity.CONTENTID);
@@ -83,7 +81,6 @@ public class DetialsActivity extends BaseActivity implements IDataCallback<Domin
         showProgress("正在加载中...");
         iClassShowCouseModel.getAllCouseWareInfo(mCourseId, this, this);
     }
-
     //初始化fragment
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void initFragment() {
@@ -124,17 +121,14 @@ public class DetialsActivity extends BaseActivity implements IDataCallback<Domin
         }
         currentFragment = fragment;
     }
-
     @Override
     protected void initContentView(Bundle savedInstanceState) {
 
     }
-
     @Override
     protected void handler(Message msg) {
 
     }
-
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @OnClick({R.id.detials_tv_left, R.id.detials_tv_center, R.id.detials_tv_right})
     public void onClick(View view) {
@@ -165,15 +159,13 @@ public class DetialsActivity extends BaseActivity implements IDataCallback<Domin
                 break;
         }
     }
-
     //重置背景颜色
+    @TargetApi(16)
     private void resetButtonBackColor() {
         mTvLeft.setBackground(this.getResources().getDrawable(R.drawable.bg_detials_textviewleft));
         mTvRight.setBackground(this.getResources().getDrawable(R.drawable.bg_detials_textviewright));
         mTvCenter.setBackground(this.getResources().getDrawable(R.drawable.bg_detials_textviewcenter));
-
     }
-
     @Override
     public void onSuccess(Domine data) {
         disProgress();

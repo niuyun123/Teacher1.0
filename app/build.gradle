@@ -19,7 +19,6 @@ android {
         }
     }
 }
-
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -49,7 +48,7 @@ dependencies {
     //FloatingActionButtonPlus
     compile 'com.lzp.floatingactionbutton:floatingactionbuttonplus:1.0.0'
     //节操播放器..一键播放视频
-    compile 'fm.jiecao:jiecaovideoplayer:2.0'
+    compile 'fm.jiecao:jiecaovideoplayer:4.6.2'
     compile 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
     //文件选择
     compile 'com.nononsenseapps:filepicker:3.0.0'
@@ -59,5 +58,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     //滑动删除
     compile 'com.yydcdut.sdlv:sdlv:0.5.4@aar'
+    
 
 }

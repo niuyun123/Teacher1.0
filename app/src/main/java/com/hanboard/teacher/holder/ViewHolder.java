@@ -1,5 +1,8 @@
 package com.hanboard.teacher.holder;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -40,12 +43,16 @@ public class ViewHolder implements OnTouchListener,ViewPager.OnPageChangeListene
 	private AutoPlayTask autoPlayTask;
 	private ImageView cirlce1,cirlce2,cirlce3;
 	private final int AUOT_PLAY_TIME = 3000;
-	private int flag=0;
-	public ViewHolder(List<Banner> data) {
+	private Context context;
+
+	public ViewHolder(List<Banner> data,Context context) {
+		this.context = context;
 		viewToReturn = initView();
 		viewToReturn.setTag(this);
 		setData(data);
 	}
+
+
 	// 把准备好的View返回去
 	public View getRootView() {
 		return viewToReturn;
@@ -154,7 +161,7 @@ public class ViewHolder implements OnTouchListener,ViewPager.OnPageChangeListene
 			return view == object;// 返回的view就是这个object
 		}
 		@Override
-		public Object instantiateItem(ViewGroup container, int position) {
+		public Object instantiateItem(ViewGroup container, final int position) {
 			ImageView imageView = new ImageView(AppContext.getInstance());
 			/*// 加载图片，%一下，防止数组越界  本地图片
 			Integer id = mDatas.get(position % mDatas.size());
@@ -166,7 +173,16 @@ public class ViewHolder implements OnTouchListener,ViewPager.OnPageChangeListene
 			if (mDatas.size()>0){
 				Picasso.with(AppContext.getInstance()).load(mDatas.get(position% mDatas.size()).imageUrl).into(imageView);
 				imageView.setScaleType(ScaleType.FIT_XY);// 每个imageview都可以设置两个源：backGround是imageview本身的大小，而src是设置的图片的大
-
+                 imageView.setOnClickListener(new View.OnClickListener() {
+					 @Override
+					 public void onClick(View view) {
+						 final Intent issueIntent = new Intent(Intent.ACTION_VIEW);
+						 issueIntent.setData(Uri.parse(mDatas.get(position% mDatas.size()).linkUrl));
+						context.startActivity(issueIntent);
+						 ///////////////////////////
+					//	 String[] browser = { "com.tencent.mtt", "com.UCMobile", "com.uc.browser", "com.oupeng.browser", "com.oupeng.mini.android", "com.android.browser" };
+					 }
+				 });
 			}else {
 				imageView.setImageResource(R.mipmap.img_black);
 			}

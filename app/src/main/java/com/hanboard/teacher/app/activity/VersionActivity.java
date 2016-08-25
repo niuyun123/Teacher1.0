@@ -2,7 +2,6 @@ package com.hanboard.teacher.app.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Display;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanboard.teacher.R;
+import com.hanboard.teacher.common.tools.OpenFileUtil;
 import com.hanboard.teacher.common.view.DowloadDialog;
 import com.hanboard.teacher.entity.Version;
 import com.lzy.okhttputils.OkHttpUtils;
@@ -86,10 +86,11 @@ public class VersionActivity extends Activity {
                             @Override
                             public void onResponse(boolean isFromCache, File file, Request request, @Nullable Response response) {
                                 dowload.dismiss();
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                OpenFileUtil.installFile(file.getAbsolutePath(),VersionActivity.this);
+                               /* Intent intent = new Intent(Intent.ACTION_VIEW);
                                 intent.setDataAndType(Uri.fromFile(new File(file.getAbsolutePath())), "application/vnd.android.package-archive");
                                 startActivity(intent);
-                                finish();
+                                finish();*/
                             }
 
                             @Override

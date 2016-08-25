@@ -42,10 +42,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/black_a10_color" />
-    <GridView
-        android:verticalSpacing="8dp"
-        android:id="@+id/preparenew_content"
-        android:layout_margin="8dp"
+    <com.hanboard.teacherhd.lib.refreshview.XRefreshView
+        android:id="@+id/preparenew_xrefreshview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></GridView>
+        android:layout_height="match_parent">
+        <GridView
+            android:verticalSpacing="8dp"
+            android:id="@+id/preparenew_content"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></GridView>
+    </com.hanboard.teacherhd.lib.refreshview.XRefreshView>
+
 </LinearLayout>

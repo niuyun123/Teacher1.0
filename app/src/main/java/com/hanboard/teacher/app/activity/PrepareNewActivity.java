@@ -24,6 +24,7 @@ import com.hanboard.teacher.model.INewCuorseModel;
 import com.hanboard.teacher.model.impl.NewCourseiml;
 import com.hanboard.teacherhd.lib.common.utils.SharedPreferencesUtils;
 import com.hanboard.teacherhd.lib.common.utils.ToastUtils;
+import com.hanboard.teacherhd.lib.refreshview.XRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +33,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class PrepareNewActivity extends BaseActivity implements IDataCallback<Domine>,AdapterView.OnItemClickListener{
+public class PrepareNewActivity extends BaseActivity implements IDataCallback<Domine>, AdapterView.OnItemClickListener {
     @BindView(R.id.preparenew_menu)
     ImageView preparenewMenu;
     @BindView(R.id.preparenew_content)
     GridView mCourseGv;
     @BindView(R.id.top)
     LinearLayout topView;
+    @BindView(R.id.preparenew_xrefreshview)
+    XRefreshView mXrefreshview;
     private PopWinShare popWinShare;
     private Elements<PrepareChapter> mElements;
     private List<PrepareChapter> chapters = new ArrayList<PrepareChapter>();
@@ -46,7 +49,8 @@ public class PrepareNewActivity extends BaseActivity implements IDataCallback<Do
     private CourseAdapter mAdpter;
     public static String CONTENTID = "contentId";
     public static String CONTENTTITLE = "contentTitle";
-    private String mSuitName=null;
+    private String mSuitName = null;
+    private int page=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,28 +58,54 @@ public class PrepareNewActivity extends BaseActivity implements IDataCallback<Do
         setContentView(R.layout.activity_prepare_new);
         ButterKnife.bind(this);
         ImmersedStatubarUtils.initAfterSetContentView(this, topView);
+        mXrefreshview.setPullLoadEnable(false);
+        mXrefreshview.setPullRefreshEnable(true);
+        mXrefreshview.setXRefreshViewListener(new XRefreshView.XRefreshViewListener() {
+            @Override
+            public void onRefresh() {
+                initData();
+            }
+
+            @Override
+            public void onLoadMore(boolean isSilence) {
+               page++;
+                initData();
+            }
+
+            @Override
+            public void onRelease(float direction) {
+
+            }
+
+            @Override
+            public void onHeaderMove(double offset, int offsetY) {
+
+            }
+        });
         initData();
     }
+
     private void initData() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle!=null){
-            mSuitName = bundle.getString(PrepareActivity.SUIT_AGE,"");
+        if (bundle != null) {
+            mSuitName = bundle.getString(PrepareActivity.SUIT_AGE, "");
             String bookId = bundle.getString(PrepareActivity.TEXTBOOK_ID);
             mAdpter = new CourseAdapter(this, R.layout.item_course, chapters, mSuitName);
             mCourseGv.setAdapter(mAdpter);
             mCourseGv.setOnItemClickListener(this);
             iNewCuorseModel = new NewCourseiml();
             showProgress("正在加载中....");
-            iNewCuorseModel.getNewCourse((String) SharedPreferencesUtils.getParam(me, "id", "null"), bookId, "1", this);
-        }else {
+            iNewCuorseModel.getNewCourse((String) SharedPreferencesUtils.getParam(me, "id", "null"), bookId, page+"", this);
+        } else {
             mAdpter = new CourseAdapter(this, R.layout.item_course, chapters, mSuitName);
             mCourseGv.setAdapter(mAdpter);
             mCourseGv.setOnItemClickListener(this);
             iNewCuorseModel = new NewCourseiml();
             showProgress("正在加载中....");
-            iNewCuorseModel.getNewCourse((String) SharedPreferencesUtils.getParam(me, "id", "null"),"", "1", this);
+            iNewCuorseModel.getNewCourse((String) SharedPreferencesUtils.getParam(me, "id", "null"), "", page+"", this);
         }
     }
+
     @Override
     protected void initContentView(Bundle savedInstanceState) {
 
@@ -121,17 +151,20 @@ public class PrepareNewActivity extends BaseActivity implements IDataCallback<Do
     @Override
     public void onSuccess(Domine data) {
         disProgress();
+        mXrefreshview.stopRefresh();
         if (data instanceof Elements) {
-           mElements = null;
+            mElements = null;
             chapters.clear();
             mElements = (Elements<PrepareChapter>) data;
             chapters.addAll(mElements.elements);
             mAdpter.notifyDataSetChanged();
-            Log.i("=========", "doResultInt: ==下载成功了" + Thread.currentThread().getName()+chapters.size());
+            Log.i("=========", "doResultInt: ==下载成功了" + Thread.currentThread().getName() + chapters.size());
         }
     }
+
     @Override
     public void onError(String msg, int code) {
+        mXrefreshview.stopRefresh();
         disProgress();
         mElements = null;
         chapters.clear();
@@ -141,11 +174,12 @@ public class PrepareNewActivity extends BaseActivity implements IDataCallback<Do
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Bundle bundle = new Bundle();
         String contentId = mElements.elements.get(i).getContentId();
-        String contentTitle=mElements.elements.get(i).getTitle();
+        String contentTitle = mElements.elements.get(i).getTitle();
         bundle.putString(CONTENTID, contentId);
         bundle.putString(CONTENTTITLE, contentTitle);
-        startActivity(DetialsActivity.class,bundle);
+        startActivity(DetialsActivity.class, bundle);
     }
+
     ////////////////////
     class OnClickLintener implements View.OnClickListener {
 

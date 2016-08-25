@@ -48,12 +48,13 @@ public class CreateLessonsDatilsActivity extends BaseActivity implements IDataCa
     private String mTextBookId;
     private List<Lessons> res = new ArrayList<>();
     private CreateLessonsLvAdapter mAdapter;
-
+    public static CreateLessonsDatilsActivity instance = null;
     @Override
     protected void initContentView(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_create_lessons_datils);
         ButterKnife.bind(this);
+        instance = this;
         ImmersedStatubarUtils.initAfterSetContentView(this, topView);
         iSelectTextBookModel = new SelectTextBookModelImpl();
         Intent intent = getIntent();

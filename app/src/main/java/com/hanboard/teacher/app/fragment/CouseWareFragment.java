@@ -90,8 +90,9 @@ public class CouseWareFragment extends BaseFragment implements AdapterView.OnIte
         item = (CourseWare)(adapterView.getAdapter().getItem(i));
         if (item.courseWareType.equals("5")||item.courseWareType.equals("6")){
             Intent intent=new Intent(context, MedioPlayer.class);
-            intent.putExtra(COURSEWAREURL,item.courseWareUrl);
-            intent.putExtra(COURSEWARETITLE,item.courseWareTitle);
+            intent.putExtra("url",item.courseWareUrl);
+            intent.putExtra("title",item.courseWareTitle);
+            intent.putExtra("type",item.courseWareType);
             startActivity(intent);
         }else {
             File file = new File(SDCardHelper.getSDCardPath() + File.separator + "temp"+File.separator+"Hanboard"

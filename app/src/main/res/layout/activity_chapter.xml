@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.hanboard.teacher.app.activity.ChapterActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -26,42 +25,35 @@
             android:gravity="center"
             android:text="章节选择"
             android:textSize="18sp" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp" />
+        <TextView
+            android:id="@+id/home_newcourse"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="最近备课"
+            android:textColor="@color/blue"
+           />
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/black_a10_color" />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ListView
-            android:id="@+id/chapter_lv_content"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/search_edt_bg"
-            android:dividerHeight="-5dp">
-        </ListView>
-        <TextView
-            android:elevation="6dp"
-            android:id="@+id/home_newcourse"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:background="@drawable/round"
-            android:clickable="true"
-            android:gravity="center"
-            android:lines="2"
-            android:padding="10dp"
-            android:text="最近备课"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
-    </RelativeLayout>
+            android:layout_height="match_parent">
+            <com.hanboard.teacherhd.lib.refreshview.XRefreshView
+                android:id="@+id/chapter_refreshView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/chapter_lv_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/search_edt_bg"
+                android:dividerHeight="-5dp"></ListView>
+            </com.hanboard.teacherhd.lib.refreshview.XRefreshView>
+
+        </RelativeLayout>
 </LinearLayout>

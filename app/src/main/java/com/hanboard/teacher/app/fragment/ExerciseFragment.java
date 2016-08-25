@@ -88,8 +88,9 @@ public class ExerciseFragment extends BaseFragment implements AdapterView.OnItem
         item = (Exercises) (adapterView.getAdapter().getItem(i));
         if (item.exercisesType.equals("5") || item.exercisesType.equals("6")) {
             Intent intent = new Intent(context, MedioPlayer.class);
-            intent.putExtra(EXERCISESWAREURL, item.exercisesUrl);
-            intent.putExtra(EXERCISESTITLE, item.exercisesType);
+            intent.putExtra("url", item.exercisesUrl);
+            intent.putExtra("title", item.exercisesTitle);
+            intent.putExtra("type", item.exercisesType);
             startActivity(intent);
         } else {
             File file = new File(SDCardHelper.getSDCardPath() + File.separator + "temp" + File.separator

@@ -1,7 +1,11 @@
 package com.hanboard.teacherhd.lib.common.utils;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.Toast;
+
+import supertoast.utils.Style;
+import supertoast.utils.SuperToast;
 
 /**
  * Toast统一管理类
@@ -22,10 +26,17 @@ public class ToastUtils
      * @param context
      * @param message
      */
-    public static void showShort(Context context, CharSequence message)
+    public static void showShort(Context context, String message)
     {
         if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        new SuperToast(context)
+                .setText(message)
+                .setDuration(Style.DURATION_SHORT)
+                .setFrame(Style.FRAME_LOLLIPOP)
+                .setColor(Color.parseColor("#000000"))
+                .setAnimations(Style.ANIMATIONS_FLY)
+                .show();
     }
 
     /**
@@ -62,6 +73,7 @@ public class ToastUtils
     {
         if (isShow)
             Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+
     }
 
     /**

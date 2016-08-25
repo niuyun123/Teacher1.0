@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanboard.teacher"
-    android:versionCode="3"
-    android:versionName="1.0.3.20160820_beta">
-
+    android:versionCode="1"
+    android:versionName="1.0.1.20160820_beta">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -40,7 +39,6 @@
         <activity android:name=".app.activity.SelectTextBookActivity" />
         <activity android:name=".app.activity.CreateLessonsDatilsActivity" />
         <activity android:name=".app.activity.AddLessonsActivity" />
-        <activity android:name=".app.activity.AddLessonsDatilsActivity" />
         <activity
             android:name="com.nononsenseapps.filepicker.FilePickerActivity"
             android:theme="@style/FilePickerTheme"
@@ -66,7 +64,6 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-
         <activity android:name=".app.activity.PrepareActivity" />
         <activity android:name=".app.activity.ChapterActivity" />
         <activity android:name=".app.activity.CourseActivity" />
@@ -74,7 +71,6 @@
         <activity
             android:name=".app.activity.MedioPlayer"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="sensorLandscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".app.activity.PrepareNewActivity" />
         <activity android:name=".app.activity.MineActivity" />
@@ -94,6 +90,7 @@
 
         <activity android:name=".app.activity.MainActivity">
         </activity>
+        <activity android:name=".app.activity.UpLoadLessonsActivity"/>
     </application>
 
 </manifest>

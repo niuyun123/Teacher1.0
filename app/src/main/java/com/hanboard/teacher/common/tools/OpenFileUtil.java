@@ -151,9 +151,11 @@ public class OpenFileUtil {
      */
     public static void  installFile(String filepath,Activity mContext){
         Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setDataAndType(Uri.fromFile(new File(filepath)),
                 "application/vnd.android.package-archive");
         mContext.startActivity(intent);
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
     /**
      * 打开文件
